@@ -1,20 +1,24 @@
 <?php
-namespace common\models;
 
+
+namespace frontend\models;
+
+use common\models\LoginForm as BaseLoginForm;
 use Yii;
-use yii\base\Model;
-use backend\models\User;
+use yii\base\Exception;
+use yii\base\InvalidConfigException;
+use yii\db\Connection;
 
 /**
- * Login form
  *
- * @property-read null|User $user
+ * @property \frontend\models\User|null $user
  */
-class LoginForm extends Model
+class LoginForm extends BaseLoginForm
 {
     public $username;
     public $password;
     public $rememberMe = true;
+    public $tin_number;
 
     private $_user;
 
@@ -59,7 +63,7 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 1800 * 24 * 30 : 0);
         }
 
         return false;
@@ -68,14 +72,14 @@ class LoginForm extends Model
     /**
      * Finds user by [[username]]
      *
-     * @return User|null
+     * @return \backend\models\User
      */
     protected function getUser()
     {
         if ($this->_user === null) {
             $this->_user = User::findByUsername($this->username);
         }
-
         return $this->_user;
     }
+
 }
