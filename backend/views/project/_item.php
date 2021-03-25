@@ -9,9 +9,11 @@ use yii\bootstrap\ActiveForm;
 <article class="item" data-key="<?php echo $model->id; ?>">
     <tr role="row">
         <td class="text-left strong fw-700"><?php echo $model->name; ?></td>
-        <td class="text-right"><?php echo $model->description; ?></td>
         <td class="text-right"><?php echo $model->start_date; ?></td>
         <td class="text-right"><?php echo $model->estimated_period; ?></td>
+        <td class="text-right"><?php echo $model->created_at; ?></td>
+        <td class="text-right"><?php echo $model->getUser()->username; ?></td>
+        <td class="text-right"><?php echo $model->getStatus(); ?></td>
         <td class="text-right">
             <a href="#" class="btn btn-secondary btn-m-s" data-toggle="modal" data-target=".example-modal-centered-transparent-<?php echo $model->id; ?>">
                 <i class="fal fa-edit"></i>

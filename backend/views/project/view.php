@@ -33,11 +33,25 @@ $this->params['breadcrumbs'][] = $this->title;
                         'description:ntext',
                         'start_date',
                         'estimated_period',
-                        'status',
+//                        'status',
+                        [
+                            'attribute' => 'status',
+                            'label' => Yii::t('app', 'Status'),
+                            'value' => function ($model) {
+                                return $model->getStatus();
+                            },
+                        ],
                         'created_at',
-                        'updated_at',
-                        'created_by',
-                        'updated_by',
+//                        'updated_at',
+//                        'created_by',
+                        [
+                            'attribute' => 'created_by',
+                            'label' => Yii::t('app', 'Created By'),
+                            'value' => function ($model) {
+                                return $model->getUser()->username;
+                            },
+                        ],
+//                        'updated_by',
                     ],
                 ]) ?>
             </div>

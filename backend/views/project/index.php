@@ -38,16 +38,24 @@ $this->params['breadcrumbs'][] = $this->title;
                                     aria-label="Name: activate to sort column descending">Name
                                 </th>
                                 <th class="sorting text-right" tabindex="0" aria-controls="dt-basic-example" rowspan="1"
-                                    colspan="1" style="width: 121px;"
-                                    aria-label="Office: activate to sort column ascending">Description
-                                </th>
-                                <th class="sorting text-right" tabindex="0" aria-controls="dt-basic-example" rowspan="1"
                                     colspan="1" style="width: 251px;"
                                     aria-label="Position: activate to sort column ascending">Start Date
                                 </th>
                                 <th class="sorting text-center" tabindex="0" aria-controls="dt-basic-example" rowspan="1"
                                     colspan="1" style="width: 251px;"
                                     aria-label="Position: activate to sort column ascending">Estimated Period
+                                </th>
+                                <th class="sorting text-center" tabindex="0" aria-controls="dt-basic-example" rowspan="1"
+                                    colspan="1" style="width: 251px;"
+                                    aria-label="Position: activate to sort column ascending">Created At
+                                </th>
+                                <th class="sorting text-center" tabindex="0" aria-controls="dt-basic-example" rowspan="1"
+                                    colspan="1" style="width: 251px;"
+                                    aria-label="Position: activate to sort column ascending">Created By
+                                </th>
+                                <th class="sorting text-center" tabindex="0" aria-controls="dt-basic-example" rowspan="1"
+                                    colspan="1" style="width: 251px;"
+                                    aria-label="Position: activate to sort column ascending">Status
                                 </th>
                                 <th class="sorting text-center" tabindex="0" aria-controls="dt-basic-example" rowspan="1"
                                     colspan="1" style="width: 251px;"

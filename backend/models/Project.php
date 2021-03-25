@@ -4,6 +4,7 @@
 namespace backend\models;
 
 
+use Yii;
 use yii\behaviors\BlameableBehavior;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
@@ -39,6 +40,12 @@ class Project extends \common\models\Project
             ],
         ];
     }
+    public function attributeLabels()
+    {
+        return [
+            'status' => Yii::t('app', 'Status'),
+        ];
+    }
     public function getProjectByCode($code)
     {
         return self::find()->where(['like', 'code', $code])->orderBy(['id' => SORT_DESC])->one();
@@ -66,5 +73,21 @@ class Project extends \common\models\Project
     public function beforeSave($insert) {
         $this->code = $this->generateCodes();
         return parent::beforeSave($insert);
+    }
+
+    public function getUser()
+    {
+        return User::findOne($this->created_by);
+    }
+    public function getStatus()
+    {
+        if ($this->status == Yii::$app->params['project_status_active']) {
+            $status = Yii::t('app', 'Active');
+        } elseif ($this->status == Yii::$app->params['project_status_deleted']) {
+            $status = Yii::t('app', 'Deleted');
+        } else {
+            $status = Yii::t('app', 'Not set');
+        }
+        return $status;
     }
 }
