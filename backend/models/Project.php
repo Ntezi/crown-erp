@@ -17,7 +17,7 @@ class Project extends \common\models\Project
             [['description'], 'string'],
             [['start_date', 'created_at', 'updated_at'], 'safe'],
             [['estimated_period', 'status', 'created_by', 'updated_by'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'code'], 'string', 'max' => 255],
         ];
     }
 
@@ -38,5 +38,33 @@ class Project extends \common\models\Project
                 'updatedByAttribute' => 'updated_by',
             ],
         ];
+    }
+    public function getProjectByCode($code)
+    {
+        return self::find()->where(['like', 'code', $code])->orderBy(['id' => SORT_DESC])->one();
+    }
+
+    public function generateCodes()
+    {
+        $code = strtoupper(substr($this->name, 0, 3));
+        $code = preg_replace('/\s+/', '', $code);
+        $existing_project = $this->getProjectByCode($code);
+
+        if (!empty($existing_project)) {
+            $digit = $existing_project->id + 1;
+            if ($existing_project->id < 10) {
+                $code .= '00' . $digit;
+            } elseif ($existing_project->id < 100) {
+                $code .= '0' . $digit;
+            }
+        } else {
+            $code .= '001';
+        }
+        return preg_replace('/\s+/', '', $code);
+    }
+
+    public function beforeSave($insert) {
+        $this->code = $this->generateCodes();
+        return parent::beforeSave($insert);
     }
 }

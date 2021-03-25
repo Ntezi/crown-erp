@@ -10,6 +10,7 @@ use Yii;
  *
  * @property int $id
  * @property string $name
+ * @property string $code
  * @property string|null $description
  * @property string|null $start_date
  * @property int|null $estimated_period
@@ -41,11 +42,11 @@ class Project extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'status', 'created_by', 'updated_by'], 'required'],
+            [['name', 'code', 'status', 'created_by', 'updated_by'], 'required'],
             [['description'], 'string'],
             [['start_date', 'created_at', 'updated_at'], 'safe'],
             [['estimated_period', 'status', 'created_by', 'updated_by'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['name', 'code'], 'string', 'max' => 255],
         ];
     }
 
@@ -57,6 +58,7 @@ class Project extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
+            'code' => Yii::t('app', 'Code'),
             'description' => Yii::t('app', 'Description'),
             'start_date' => Yii::t('app', 'Start Date'),
             'estimated_period' => Yii::t('app', 'Estimated Period'),
