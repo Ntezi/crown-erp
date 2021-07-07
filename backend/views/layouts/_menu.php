@@ -36,6 +36,19 @@ use \yii\helpers\Url;
                     <span class="nav-link-text" data-i18n="nav.application_intel_analytics_dashboard"><?php echo Yii::t('app', 'Home') ?></span>
                 </a>
             </li>
+            <li>
+                <a href="#" title="UI Components" data-filter-tags="ui projects" class="nav-title">
+                    <i class="fal fa-pallet-alt"></i>
+                    <span class="nav-link-text"><?php echo Yii::t('app', 'Project Management') ?></span>
+                </a>
+                <ul>
+                    <li>
+                        <a href="<?php echo Url::to(['project/']) ?>" title="Projects" data-filter-tags="ui projects">
+                            <span class="nav-link-text" data-i18n="nav.ui_components_alerts"><?php echo Yii::t('app', 'Projects') ?></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-title"><?php echo Yii::t('app', 'Sales') ?></li>
             <li>
                 <a href="#" title="UI Components" data-filter-tags="ui sales">

@@ -66,4 +66,8 @@ return [
 
     'invoice_type_cash' => 1,
     'invoice_type_credit' => 0,
+
+    /*PROJECT*/
+    'project_status_active' => 1,
+    'project_status_deleted' => 0,
 ];
